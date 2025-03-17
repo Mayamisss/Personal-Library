@@ -1,0 +1,42 @@
+# Personal Librarian
+#### Video DEMO:https://youtu.be/B6ydPsHxwoA
+#### Description:
+OVERVIEW:
+The Personal Librarian is a Python-based program designed to function as a personal library management tool. Inspired by my own book club and the lack of book-club-friendly applications on the market, this project provides users with a lightweight tool for organizing, tracking, and curating their personal book collections.
+This program currently serves as the foundation for a larger vision, with a modular and expandable design to support future enhancements, such as integration with online book databases and features for collaborative book clubs. The skeleton reflects fundamental programming principles like Object-Oriented Programming (OOP), input validation, and file handling.
+FILES & FUNCTIONS:
+main.py
+This file contains the primary interface and logic of the program. It facilitates the user experience by presenting a main menu with five core options:
+    Add a Book:
+    Prompts users for the title, rating (1-5 stars), and progress status (e.g., "In Progress" or "Finished"). Books are stored as Book objects within the UserLibrary class. Duplicate entries are prevented via a case-insensitive title check.
+    Review Library:
+    Displays the user’s library, sorted by title, rating, or most recently added. Sorting is achieved using Python’s built-in sorted() function with custom sorting keys for flexibility and simplicity.
+    Search for a Book:
+    Checks if a specific book exists in the library or get information through web search using OpenLibrary's public API. Search functionality is case-insensitive and allows quick lookups without navigating through the entire collection.
+    Update Book Progress:
+    Enables users to modify the progress status of an existing book. The progress options are validated to ensure consistency and prevent invalid updates.
+    Exit:
+    Saves the library to a CSV file (user_library.csv) to ensure persistence across sessions.
+
+Book Class
+The Book class represents individual books in the library. Each Book object has the following attributes:
+    title (string): The book’s title.
+    rating (string): A visual representation of the user’s rating in the form of stars (e.g., "⭐⭐⭐⭐").
+    progress (string): The user’s reading status (e.g., "Not Started," "In Progress," "Finished").
+    The Book class includes an update_progress method to allow progress modifications with strict validation of input values.
+UserLibrary Class
+This class encapsulates the user’s library, ensuring all interactions with the Book object collection are centralized and consistent. It supports key operations such as:
+    Adding books with duplicate detection.
+    Sorting books by title, rating, or date added.
+    Searching for books by title.
+    Updating the progress of specific books.
+DESIGN DECISIONS:
+By using an object-oriented approach, I ensured the program is modular and easy to expand. This allows for the seamless addition of attributes or features in future iterations without disrupting the existing structure..
+To enforce meaningful ratings, I decided that users cannot rate a book marked as "Did Not Finish" (DNF). This rule aligns with common book club practices and ensures that ratings are tied to completed or substantially read books.
+I chose CSV as the data storage format for its simplicity and wide compatibility. Using Python’s csv module enabled efficient saving and loading of the library, with a clear path for migrating to a more robust database solution (e.g., SQLite or PostgreSQL) in future iterations.
+The program incorporates robust input validation to handle edge cases and prevent crashes. For instance:
+    Ratings must be integers between 1 and 5.
+    Progress updates are limited to predefined valid options.
+    Duplicate titles are flagged to avoid redundancy.
+CONCLUSION
+This project is a practical application of Python fundamentals, blending my love for reading with my interest in programming. It showcases concepts like OOP, file handling, and input validation while leaving room for growth as my programming skills evolve.
